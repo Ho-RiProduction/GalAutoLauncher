@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    UI 冒烟测试：复用主项目源码（不含 Program.cs），在 STA 线程上
+    实际构造并显示每个窗体，捕获布局 / 资源 / 绑定异常。
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>GalAutoLauncher.UiSmoke</RootNamespace>
+    <AssemblyName>GalAutoLauncher.UiSmoke</AssemblyName>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <RollForward>LatestMajor</RollForward>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\src\GalAutoLauncher\Core\*.cs" />
+    <Compile Include="..\..\src\GalAutoLauncher\UI\*.cs" />
+    <Compile Include="..\..\src\GalAutoLauncher\App\IconProvider.cs" />
+    <Compile Include="..\..\src\GalAutoLauncher\App\TrayApplicationContext.cs" />
+    <Compile Include="Program.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Management" Version="8.0.0" />
+  </ItemGroup>
+
+</Project>

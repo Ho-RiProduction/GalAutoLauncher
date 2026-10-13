@@ -1,0 +1,24 @@
+# Build output
+bin/
+obj/
+publish/
+artifacts/
+*.user
+*.suo
+.vs/
+
+# Local runtime data (portable mode writes these next to the exe)
+src/GalAutoLauncher/bin/
+src/GalAutoLauncher/obj/
+logs/
+state.json
+games.json
+config.json
+
+# Keep the shipped defaults
+!src/GalAutoLauncher/config.json
+!src/GalAutoLauncher/games.json
+
+# OS
+Thumbs.db
+desktop.ini

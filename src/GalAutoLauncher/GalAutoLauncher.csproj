@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+
+    <RootNamespace>GalAutoLauncher</RootNamespace>
+    <AssemblyName>GalAutoLauncher</AssemblyName>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <CodePage>65001</CodePage>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <InvariantGlobalization>false</InvariantGlobalization>
+
+    <Version>1.0.0</Version>
+    <FileVersion>1.0.0.0</FileVersion>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <Product>GalAutoLauncher</Product>
+    <AssemblyTitle>GalAutoLauncher</AssemblyTitle>
+    <Company>GalAutoLauncher</Company>
+    <Description>监听 War Thunder 启动并随机启动本地 Galgame 的 Windows 托盘助手。</Description>
+    <Copyright>Copyright (c) 2026 GalAutoLauncher</Copyright>
+    <NeutralLanguage>zh-Hans</NeutralLanguage>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="games.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="install.cmd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="uninstall.cmd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\app.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- WMI 进程启动事件（Win32_ProcessStartTrace）支持 -->
+    <PackageReference Include="System.Management" Version="8.0.0" />
+  </ItemGroup>
+
+</Project>
