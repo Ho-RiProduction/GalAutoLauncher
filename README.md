@@ -7,6 +7,22 @@ Windows 后台助手：监听《战争雷霆》(War Thunder) 或其他**非 Galg
 
 ---
 
+## 直接下载（普通用户）
+
+不想自己编译的话，到 [**Releases**](https://github.com/Ho-RiProduction/GalAutoLauncher/releases/latest) 下载
+`GalAutoLauncher-win-x64.zip`，解压后双击 `install.cmd` 即可。压缩包是自包含单文件程序，**无需安装 .NET 运行时**。
+
+使用流程：
+
+1. 解压到一个固定目录（例如 `C:\Tools\GalAutoLauncher`，不要放桌面或临时目录）。
+2. 双击 `install.cmd` → 开启开机自启并启动托盘程序。
+3. 右键托盘图标 → **重新扫描 Galgame**（换新电脑或游戏分散在多个盘时选 **扫描所有盘寻找 Galgame**）。
+4. 之后开机 → 助手后台驻留 → 你打开战争雷霆 → 自动随机打开一个 Galgame。
+
+取消自启：双击 `uninstall.cmd`。
+
+---
+
 ## 功能一览
 
 | 需求 | 实现 |
