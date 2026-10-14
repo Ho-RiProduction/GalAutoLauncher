@@ -2,7 +2,7 @@
 
 Windows 后台助手：监听《战争雷霆》(War Thunder) 或其他**非 Galgame 游戏**的**新启动**事件，并在其后随机启动本机的一个 Galgame。
 
-> 默认同时保留 War Thunder 的精确监听；也可以在设置中关闭“任意游戏触发”，改为只监听 War Thunder。
+> 默认只监听 War Thunder 的精确进程；如需“打开任意非 Galgame 游戏也触发”，可在设置中开启“任意游戏触发”。
 > 本程序**不是**游戏启动器，不会启动战争雷霆/其他游戏，也不会开机或定时自动启动 Galgame。
 
 ---
@@ -13,7 +13,7 @@ Windows 后台助手：监听《战争雷霆》(War Thunder) 或其他**非 Galg
 | --- | --- |
 | 托盘驻留、隐藏运行 | ✅ `NotifyIcon`，关闭主窗口仅最小化到托盘 |
 | 监听 `aces.exe` / `WarThunder.exe` | ✅ 默认 WMI 实时事件，失败自动回退到进程轮询 |
-| 监听任意非 Galgame 游戏 | ✅ `TriggerAnyGame` 默认开启；要求可见游戏窗口，并排除系统进程、工具、浏览器、启动器和已知 Galgame |
+| 监听任意非 Galgame 游戏（可选） | ⚙️ `TriggerAnyGame` **默认关闭**，只监听战争雷霆；需要时可手动开启，要求可见游戏窗口，并排除系统进程、工具、浏览器、启动器和已知 Galgame |
 | 只响应“新启动”的进程 | ✅ 启动时记录基线快照，仅对**新出现**的 PID 触发 |
 | 等待若干秒再启动（可配置） | ✅ `LaunchDelaySeconds`，另有 `LaunchDelayJitterSeconds` 随机延迟 |
 | 随机启动一个 Galgame | ✅ `RandomLaunch`，**每个游戏权重相同**，且不会连续重复 |
@@ -136,7 +136,7 @@ GalAutoLauncher.exe launch       测试随机启动一个 Galgame
   "ShowNotifications": true,
   "LogRetentionDays": 14,
   "ExcludedDirectories": [],
-  "TriggerAnyGame": true,
+  "TriggerAnyGame": false,
   "AnyGameProcessBlacklist": ["explorer", "chrome", "steam", "updater"],
   "ScanAllDrives": false
 }
@@ -157,7 +157,7 @@ GalAutoLauncher.exe launch       测试随机启动一个 Galgame
 | `DetectUnity` | 是否扫描 Unity 视觉小说（保守规则，默认开启） |
 | `DetectGeneric` | 是否扫描通用入口 `game.exe` 等（误报率高，默认关闭） |
 | `ExcludedDirectories` | 扫描时跳过的目录（绝对路径） |
-| `TriggerAnyGame` | 是否在任意非 Galgame 游戏启动时也触发；默认 `true`，关闭后仍监听 War Thunder |
+| `TriggerAnyGame` | 是否在任意非 Galgame 游戏启动时也触发；**默认 `false`（只监听 War Thunder）**，开启后额外监听其他游戏 |
 | `AnyGameProcessBlacklist` | “任意游戏”识别时额外排除的进程名（浏览器、聊天工具、启动器、工具等） |
 | `ScanAllDrives` | 是否让 `scan` 默认扫描所有固定磁盘；托盘菜单也可临时选择全盘扫描 |
 

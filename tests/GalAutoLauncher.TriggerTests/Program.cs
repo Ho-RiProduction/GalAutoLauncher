@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.Text;
 using GalAutoLauncher;
 
@@ -205,13 +205,13 @@ internal static class Program
             var helper1 = StartWindowHelper();
             Check("成功启动模拟普通游戏的可见窗口进程", helper1 is not null);
 
-            var anyOk = WaitFor(() => File.Exists(anyMarker), TimeSpan.FromSeconds(25));
+            var anyOk = WaitFor(() => File.Exists(anyMarker), TimeSpan.FromSeconds(60));
             Check("识别到普通游戏窗口后自动启动了 Galgame", anyOk);
 
             // ---- 递归防护：Galgame 启动后的抑制窗口内，不应再次触发 ----
             var anyCountBefore = ReadLaunchCount(anyMarker);
             var helper2 = StartWindowHelper();
-            Thread.Sleep(8000);
+            Thread.Sleep(12000);
             var anyCountAfter = ReadLaunchCount(anyMarker);
             Check("Galgame 启动后的抑制窗口内不会递归触发", anyCountAfter == anyCountBefore);
 

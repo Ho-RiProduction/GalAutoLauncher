@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 
 namespace GalAutoLauncher;
 
@@ -73,10 +73,11 @@ internal sealed class AppConfig
 
     /// <summary>
     /// 除 War Thunder 之外，是否也在“任意非 Galgame 游戏”启动时触发。
-    /// 默认开启；识别采用保守规则（可见主窗口 + 非系统进程 + 排除启动器/工具/浏览器等）。
+    /// 默认关闭：只监听 TriggerProcesses（战争雷霆）。
+    /// 开启后采用保守规则识别（可见主窗口 + 非系统进程 + 排除启动器/工具/浏览器等）。
     /// </summary>
     [JsonPropertyOrder(16)]
-    public bool TriggerAnyGame { get; set; } = true;
+    public bool TriggerAnyGame { get; set; } = false;
 
     /// <summary>
     /// “任意游戏”识别的额外进程名黑名单（不需要写 .exe）。

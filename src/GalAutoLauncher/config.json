@@ -18,7 +18,7 @@
   "ShowNotifications": true,
   "LogRetentionDays": 14,
   "ExcludedDirectories": [],
-  "TriggerAnyGame": true,
+  "TriggerAnyGame": false,
   "AnyGameProcessBlacklist": [
     "explorer", "dwm", "csrss", "winlogon", "services", "svchost", "taskhostw",
     "runtimebroker", "searchhost", "startmenuexperiencehost", "shellexperiencehost",

@@ -225,8 +225,11 @@ internal sealed class AnyGameDetector
                         return false;
                     }
 
-                    hasWindow = process.MainWindowHandle != IntPtr.Zero;
-                    title = process.MainWindowTitle ?? string.Empty;
+                    // 不要用 Process.MainWindowHandle：它按枚举顺序取第一个顶层窗口，
+                    // 可能命中 UAC 输入指示器等“可见但无标题”的系统浮层，
+                    // 从而漏掉真正的游戏窗口。这里自行枚举出“可见 + 有标题”的主窗口。
+                    hasWindow = WindowInspector.TryFindMainWindow(started.Pid, out _, out var windowTitle);
+                    title = hasWindow ? windowTitle : string.Empty;
 
                     if (string.IsNullOrWhiteSpace(path))
                     {
